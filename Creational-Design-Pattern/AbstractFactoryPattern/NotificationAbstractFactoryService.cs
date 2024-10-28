@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AbstractFactoryPattern
 {
@@ -11,7 +13,7 @@ namespace AbstractFactoryPattern
         void Send(string message);
     }
 
-    // Concreate EmailNotificationService Implementation
+    // Concrete EmailNotificationService Implementation
     public class EmailNotificationService : INotificationService
     {
         public void Send(string message)
@@ -20,7 +22,7 @@ namespace AbstractFactoryPattern
         }
     }
 
-    // Concreate SMSNotificationService Implementation
+    // Concrete SMSNotificationService Implementation
     public class SMSNotificationService : INotificationService
     {
         public void Send(string message)
@@ -29,12 +31,40 @@ namespace AbstractFactoryPattern
         }
     }
 
-    // Factories Interfaces
+    #region Factory Method
+
+    // Factories Interfaces: Each factory will create a specific notification service.
     public interface INotificationServiceFactory
     {
         INotificationService CreateNotificationService();
     }
+    
+    // Concrete Service Factory
+    public class EmailNotificationServiceFactory : INotificationServiceFactory
+    {
+        public INotificationService CreateNotificationService()
+        {
+            return new EmailNotificationService();
+        }
+    }
 
+    // Concrete Service Factory
+    public class SMSNotificationServiceFactory : INotificationServiceFactory
+    {
+        public INotificationService CreateNotificationService()
+        {
+            return new SMSNotificationService();
+        }
+    }
+
+    #endregion Factory Method
+    
+
+    #region Abstract Factory
+    /// <summary>
+    /// Abstract Factory Method: which will be responsible for creating
+    /// However, the bellow example does not maintain open-closed principals
+    /// </summary>
     public interface INotificationFactory
     {
         INotificationServiceFactory CreateEmailNotificationServiceFactory();
@@ -55,20 +85,33 @@ namespace AbstractFactoryPattern
             return new SMSNotificationServiceFactory();
         }
     }
-
-    public class EmailNotificationServiceFactory : INotificationServiceFactory
+    
+    /// <summary>
+    /// This follow code will automatically add appropriate services based on given type
+    /// </summary>
+    public interface INotificationFactoryWithSolid
     {
-        public INotificationService CreateNotificationService()
+        INotificationServiceFactory GetFactory(string notificationType);
+    }
+
+    public class NotificationFactoryWithSolid : INotificationFactoryWithSolid
+    {
+        private readonly IEnumerable<INotificationServiceFactory> _factories;
+
+        // Constructor injection using ASP.NET Core DI
+        public NotificationFactoryWithSolid(IEnumerable<INotificationServiceFactory> factories)
         {
-            return new EmailNotificationService();
+            _factories = factories;
+        }
+
+        // Returns the appropriate factory based on the notification type
+        public INotificationServiceFactory GetFactory(string notificationType)
+        {
+            return _factories.FirstOrDefault(f =>
+                       f.GetType().Name.Contains(notificationType, StringComparison.OrdinalIgnoreCase))
+                   ?? throw new ArgumentException("Invalid notification type.");
         }
     }
 
-    public class SMSNotificationServiceFactory : INotificationServiceFactory
-    {
-        public INotificationService CreateNotificationService()
-        {
-            return new SMSNotificationService();
-        }
-    }
+    #endregion end of Abstract Factory
 }

@@ -18,6 +18,9 @@ namespace AbstractFactoryPattern
             INotificationService smsService = smsFactory.CreateNotificationService();
             smsService.Send("Hello from SMS notification!");
 
+            
+            //
+            Console.WriteLine("VehicleFactory Examples:");
             IVehicleFactory regularVehicleFactory = new RegularVehicleFactory();
             IBike regularBike = regularVehicleFactory.CreateBike();
             regularBike.GetDetails();

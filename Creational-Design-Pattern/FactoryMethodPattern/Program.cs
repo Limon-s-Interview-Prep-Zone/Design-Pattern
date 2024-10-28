@@ -18,7 +18,7 @@ namespace FactoryMethodPattern
     {
         void Send(string message);
     }
-    // Concrete Prodct for EmailNotificationService
+    // Concrete Product for EmailNotificationService
     public class EmailNotificationService : INotificationService
     {
         public void Send(string message)
@@ -27,7 +27,7 @@ namespace FactoryMethodPattern
         }
     }
 
-    // Concrete Prodct for SMSNotificationService
+    // Concrete Product for SMSNotificationService
     public class SMSNotificationService : INotificationService
     {
         public void Send(string message)
@@ -35,7 +35,9 @@ namespace FactoryMethodPattern
             Console.WriteLine($"SMS sent: {message}");
         }
     }
-    // Base Creator Class
+
+    #region Factory Method
+    // Base Creator Class for Object creation
     public abstract class NotificationServiceCreator
     {
         public abstract INotificationService CreateNotificationService();
@@ -76,4 +78,7 @@ namespace FactoryMethodPattern
     //         return Ok();
     //     }
     // }
+    
+    
+    #endregion Factory Method
 }

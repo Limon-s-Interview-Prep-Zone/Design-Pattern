@@ -9,7 +9,7 @@ namespace FactoryPattern
         void Send(string message);
     }
 
-    // Concreate EmailNotificationService Implementation
+    // Concrete EmailNotificationService Implementation
     public class EmailNotificationService : INotificationService
     {
         public void Send(string message)
@@ -18,7 +18,7 @@ namespace FactoryPattern
         }
     }
 
-    // Concreate SMSNotificationService Implementation
+    // Concrete SMSNotificationService Implementation
     public class SMSNotificationService : INotificationService
     {
         public void Send(string message)
