@@ -6,7 +6,7 @@ namespace BridgePattern
     {
         void Send(string message);
     }
-    
+
     public class EmailSender : INotificationSender
     {
         public void Send(string message)
@@ -22,9 +22,9 @@ namespace BridgePattern
             Console.WriteLine($"Sending SMS Notification: {message}");
         }
     }
-    
+
     /// <summary>
-    /// Create a abstraction
+    ///     Create a abstraction
     /// </summary>
     public abstract class Notification
     {
@@ -40,7 +40,9 @@ namespace BridgePattern
 
     public class AlertNotification : Notification
     {
-        public AlertNotification(INotificationSender notificationSender) : base(notificationSender) { }
+        public AlertNotification(INotificationSender notificationSender) : base(notificationSender)
+        {
+        }
 
         public override void SendNotification(string message)
         {
@@ -51,7 +53,9 @@ namespace BridgePattern
 
     public class ReminderNotification : Notification
     {
-        public ReminderNotification(INotificationSender notificationSender) : base(notificationSender) { }
+        public ReminderNotification(INotificationSender notificationSender) : base(notificationSender)
+        {
+        }
 
         public override void SendNotification(string message)
         {
@@ -62,7 +66,9 @@ namespace BridgePattern
 
     public class PromotionNotification : Notification
     {
-        public PromotionNotification(INotificationSender notificationSender) : base(notificationSender) { }
+        public PromotionNotification(INotificationSender notificationSender) : base(notificationSender)
+        {
+        }
 
         public override void SendNotification(string message)
         {
@@ -70,5 +76,4 @@ namespace BridgePattern
             _notificationSender.Send(message);
         }
     }
-
 }
