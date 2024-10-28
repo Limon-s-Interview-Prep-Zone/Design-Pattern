@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsibilityPattern", "ChainOfResponsibilityPattern\ChainOfResponsibilityPattern.csproj", "{BAD5ECDE-CA5F-40C6-8E84-5C11C79F83A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPattern", "CommandPattern\CommandPattern.csproj", "{BF435ED6-CA4B-40B9-B8CC-171735E7AB1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverDesignPattern", "ObserverDesignPattern\ObserverDesignPattern.csproj", "{89AA772A-07AC-48E5-A77F-3F658304A761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{0BD74721-999E-461C-9981-8922A46510DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD5ECDE-CA5F-40C6-8E84-5C11C79F83A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD5ECDE-CA5F-40C6-8E84-5C11C79F83A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD5ECDE-CA5F-40C6-8E84-5C11C79F83A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD5ECDE-CA5F-40C6-8E84-5C11C79F83A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF435ED6-CA4B-40B9-B8CC-171735E7AB1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF435ED6-CA4B-40B9-B8CC-171735E7AB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF435ED6-CA4B-40B9-B8CC-171735E7AB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF435ED6-CA4B-40B9-B8CC-171735E7AB1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89AA772A-07AC-48E5-A77F-3F658304A761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89AA772A-07AC-48E5-A77F-3F658304A761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89AA772A-07AC-48E5-A77F-3F658304A761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89AA772A-07AC-48E5-A77F-3F658304A761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD74721-999E-461C-9981-8922A46510DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD74721-999E-461C-9981-8922A46510DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD74721-999E-461C-9981-8922A46510DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD74721-999E-461C-9981-8922A46510DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
