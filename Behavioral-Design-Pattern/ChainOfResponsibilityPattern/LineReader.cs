@@ -1,13 +1,25 @@
 using System;
+
 namespace ChainOfResponsibilityPattern
 {
     public static class LineReader
     {
-        public static void ReadLines()
+        public static void DriverMethod()
+        {
+            Console.WriteLine("Type a Number");
+            try
+            {
+                ReadLines();
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Quit trying divisible by zero");
+            }
+        }
+
+        private static void ReadLines()
         {
             while (true)
-            {
-
                 try
                 {
                     TheGreatDivider.MaxIntDividedBy(Console.ReadLine());
@@ -20,9 +32,9 @@ namespace ChainOfResponsibilityPattern
                 {
                     Console.WriteLine($"caught::{ex.Message}");
                 }
-            }
         }
     }
+
     public static class TheGreatDivider
     {
         public static void MaxIntDividedBy(string number)
