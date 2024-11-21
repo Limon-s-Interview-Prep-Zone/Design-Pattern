@@ -5,15 +5,18 @@ namespace PrototypePattern
 {
     public interface IEmailTemplatePrototype
     {
-        IEmailTemplatePrototype Clone();
         string Subject { get; set; }
+        IEmailTemplatePrototype Clone();
         string GetContent();
     }
-    
+
+    /// <summary>
+    ///     Concrete Welcome Email
+    /// </summary>
     public class WelcomeEmail : IEmailTemplatePrototype
     {
-        public string Subject { get; set; } = "Welcome to Our Service!";
         public string Content { get; set; } = "Dear [UserName], thank you for joining us!";
+        public string Subject { get; set; } = "Welcome to Our Service!";
 
         public IEmailTemplatePrototype Clone()
         {
@@ -26,10 +29,16 @@ namespace PrototypePattern
             return Content;
         }
     }
+
+    /// <summary>
+    ///     Concrete Password Reset Email
+    /// </summary>
     public class PasswordResetEmail : IEmailTemplatePrototype
     {
+        public string Content { get; set; } =
+            "Hello [UserName], please use the following link to reset your password: [Link]";
+
         public string Subject { get; set; } = "Password Reset Request";
-        public string Content { get; set; } = "Hello [UserName], please use the following link to reset your password: [Link]";
 
         public IEmailTemplatePrototype Clone()
         {
@@ -43,6 +52,9 @@ namespace PrototypePattern
         }
     }
 
+    /// <summary>
+    ///  Prototype registry
+    /// </summary>
     public class EmailTemplateFactory
     {
         private readonly Dictionary<string, IEmailTemplatePrototype> _templates = new();
@@ -59,8 +71,15 @@ namespace PrototypePattern
             return temp;
         }
     }
-    
-    public class EmailService
+
+    public interface IEmailService
+    {
+        public string SendEmail(string templateType, string userName, string link = null);
+    }
+    /// <summary>
+    /// Client Code
+    /// </summary>
+    public class EmailService: IEmailService
     {
         private readonly EmailTemplateFactory _templateFactory;
 
@@ -74,18 +93,14 @@ namespace PrototypePattern
             var template = _templateFactory.GetTemplate(templateType);
 
             // Customize the cloned template with user data
-            string content = template.GetContent().Replace("[UserName]", userName);
+            var content = template.GetContent().Replace("[UserName]", userName);
 
-            if (link != null)
-            {
-                content = content.Replace("[Link]", link);
-            }
+            if (link != null) content = content.Replace("[Link]", link);
 
             // Simulate sending an email
             Console.WriteLine($"Sending Email - Subject: {template.Subject}, Content: {content}");
-        
+
             return content; // For testing purposes
         }
     }
-
 }

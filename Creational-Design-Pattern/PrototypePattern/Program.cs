@@ -2,12 +2,12 @@
 
 namespace PrototypePattern
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var templateFactory = new EmailTemplateFactory();
-            var emailService = new EmailService(templateFactory);
+            IEmailService emailService = new EmailService(templateFactory);
 
             // Send a welcome email
             Console.WriteLine("Sending Welcome Email:");
