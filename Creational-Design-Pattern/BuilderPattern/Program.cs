@@ -14,6 +14,12 @@ namespace BuilderPattern
                                     .CalculateTotalAmount()
                                     .Build();
             Console.WriteLine(JsonSerializer.Serialize<Order>(order));
+            
+            // IHouseBuilder
+            IHouseBuilder<House> houseBuilder = new HouseBuilder();
+            House house = houseBuilder.BuildDoors("Wooderdoors").GetBuilder();
+            Console.WriteLine(JsonSerializer.Serialize<House>(house));
+
         }
     }
 
