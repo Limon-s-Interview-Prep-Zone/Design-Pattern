@@ -10,7 +10,7 @@ The Creational Design Patterns play an important role in how we create objects.
 ---
 ### 1.1#Signleton Pattern
 The Singleton pattern ensures a class has only `one instance` and provides a global point of access to it.
-   - `Database connection, Logging, configuration settings`.
+   - `Database connection, Logging, configuration settings, file handling`.
 
 **`Trade-off`**:
    - **Pros:**
@@ -76,7 +76,7 @@ public class NotificationFactoryService
 ---
 
 ### 1.3# Factory Method Pattern:
-The Factory Method Pattern defines an interface for creating an object but lets subclasses alter the type of objects that will be created. This pattern involves a base class (often abstract) and subclasses that implement the factory method to create objects.
+The Factory Method Pattern defines an interface for creating an object but lets subclasses alter the type of objects that will be created. This pattern involves a base class (often abstract) and subclasses that implement the `factory method to create objects`.
 - provides a method to create objects, with the actual creation logic in subclasses.
 - Promotes code extensibility and follows the Open/Closed Principle.
 - ISP: not directly applicable.
@@ -135,8 +135,10 @@ The Factory Method Pattern defines an interface for creating an object but lets 
 ---
 ### 1.4# Abstract Factory Pattern:
 The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes. It involves `multiple factories for different products` and a `common interface to interact` with these factories.
-- Provides an interface for `creating families of related objects`.
-- Suitable for systems that require a `suite of products or services`.
+- `Interface Definition:` It defines an abstract interface for creating a variety of products.
+- `Families of Products:` Allows the creation of related objects that are meant to be used together.
+- `Decoupling:` Decouples the client code from the specific classes of the products it uses, promoting loose coupling.
+- `Consistency:` Ensures that products created by a factory are compatible with each other.
 - Abstracts `the creation of families of objects`, making it easier to `swap out entire families` without changing client code.
 - Meet `SOLID` principle.
 ```c#
