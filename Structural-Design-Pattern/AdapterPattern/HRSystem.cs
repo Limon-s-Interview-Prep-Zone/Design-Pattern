@@ -26,6 +26,7 @@ namespace AdapterPattern
         public decimal Salary { get; private set; }
     }
 
+    // Adaptee: which is legacy systems that systems should handle
     public class ThirdPartyBillingSystem
     {
         //ThirdPartyBillingSystem accepts employee's information as a List to process each employee's salary
@@ -35,12 +36,13 @@ namespace AdapterPattern
         }
     }
 
-
+// adapter interface
     public interface ITarget
     {
         void ProcessCompanySalary(string[,] employeesArray);
     }
 
+    // concrete Adapter
     public class EmployeeAdapter : ITarget
     {
         private readonly ThirdPartyBillingSystem thirdPartyBillingSystem = new();

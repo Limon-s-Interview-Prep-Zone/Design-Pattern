@@ -24,11 +24,11 @@ Adapter is a structural design pattern that allows objects with incompatible int
 **Case Study- HR system:** Suppose we have a existing HR mangament app that supports `array of string employees` and we want to add a third party system that supports `List<Employee> objects`
 1. `Target (ITarget):` Defines the method signature expected by the client `(ProcessCompanySalary)`.
 2. `Adapter (EmployeeAdapter):` Implements ITarget and translates the legacy `2D array data` to the expected format (`List<Employee>`) for the third-party system.
-3. `Adaptee (Employee, ThirdPartyBillingSystem)`: Represents the existing system that the adapter is making compatible with the ITarget interface.
+3. `Adaptee (ThirdPartyBillingSystem) or Legecy code`: Represents the existing system that the adapter is making compatible with the ITarget interface.
 4. `Client (Program)`: Interacts with the ITarget interface, sending `legacy data` and processing it through the adapter
 ---
 ### 2.2# Bridge Design Pattern
-The Bridge pattern is a structural design pattern that decouples an `abstraction` from its implementation, allowing both to vary independently.<br>
+The Bridge pattern is a structural design pattern that decouples an `abstraction` from its implementation, allowing both to vary independently. `In other words, this pattern decouples two things that are usally bound together`.<br>
 Example: Suppose we are creating a notification system where notifications (like alerts, reminders, promotions) can be sent over `multiple channels (e.g., Email, SMS, Push Notifications)`. The Bridge pattern is ideal here, as we can decouple the type of notification from the channel through which it’s sent.
 
 **Key Components:**
@@ -112,13 +112,16 @@ Facade is a structural design pattern that provides a simplified interface to a 
 3. `Client`: Interacts with the OrderProcessor to place an order without dealing with the complexities of individual subsystems.
 
 Benefits:
-1. Simplifies Complex Interfaces: Makes a system easier to use by hiding complex interactions behind a simple interface.
-2. Loose Coupling: Keeps clients loosely coupled with complex subsystems.
-3. Reduces Learning Curve: Reduces the complexity for clients needing only high-level functionality without understanding the inner workings.
+1. `Simplifies Complex Interfaces:` Makes a system easier to use by hiding complex interactions behind a simple interface.
+2. `Loose Coupling:` Keeps clients loosely coupled with complex subsystems.
+3. `Reduces Learning Curve:` Reduces the complexity for clients needing only high-level functionality without understanding the inner workings.
 
 ---
 ### 4# Proxy Design Pattern
 The Proxy Pattern provides a surrogate or placeholder to control access to an object. It offers a way to defer the full creation of an object or add an extra layer of logic without modifying the original object’s code. Proxies act as intermediaries between a client and the real object, handling additional responsibilities like access control, lazy initialization, or monitoring.<br>
+**trade off**
+1. `Lazy initialization:` delay the creation of resource-intensive objects until they are actually needed.
+
 **Example:** Suppose we have a `video streaming application`. Loading the full video object (with all metadata) can be expensive. We use a `virtual proxy to load video details only when requested`.
 
 1. `Subject Interface (IVideo)`: The common interface implemented by the `real object and the proxy`.
@@ -129,7 +132,39 @@ The Proxy Pattern provides a surrogate or placeholder to control access to an ob
 
 
 ### 5# Decorate Pattern:
-The Decorator Pattern allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class. It is used to extend the functionality of an object at runtime in a flexible way, avoiding subclassing.<br>
+Decorator pattern adds new behaviors to object without affecting the orginal class.<br>
+
+```bash
+                +----------------+
+                |   Component    |
+                +----------------+
+                        ▲
+                        │
+        +----------------+----------------+
+        │                                 │
++----------------+               +----------------+
+| ConcreteComponent |           |   Decorator     |
++----------------+               +----------------+
+                                   ▲
+                                   │
+                      +-------------------------+
+                      │         Concrete        │
+                      │       Decorator A       │
+                      +-------------------------+
+                                   ▲
+                                   │
+                      +-------------------------+
+                      │         Concrete        │
+                      │       Decorator B       │
+                      +-------------------------+
+
+```
+1. Component: Defines the interface for objects that can have responsibilities added to them dynamically.
+2. ConcreteComponent: Implements the Component interface. This is the object to which additional responsibilities are added dynamically.
+3. Decorator: Maintains a reference to a Component object and defines an interface that conforms to Component’s interface.
+4. Concrete Decorators (A, B): Add responsibilities to the Component dynamically.
+
+
 
 ***Trade-Offs***
 
