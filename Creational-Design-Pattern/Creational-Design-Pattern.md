@@ -25,13 +25,14 @@ The Singleton pattern ensures a class has only `one instance` and provides a glo
 
 ---
 ### 1.2#Factory Pattern
-According to Gang of Four (GoF), a factory is an object used to create other objects. In technical terms, a factory is a class with a method. That method creates and returns different objects `based on the received input parameter`.
-   - It involves creating an object through a factory method (often a static method) instead of directly using a constructor.
-   - `Centralized creation logic`.
-   - Often uses static methods.
-   - `Violate Solid Principles`:
-     - `OCP`: modifying the factory to support new types.
-     - `ISP`: not dirrectly applicable.
+The Simple Factory Pattern centralizes object creation in a single factory class. Instead of creating objects directly with new, the client asks the factory to create and return the appropriate object based on an input parameter.
+- Centralizes object creation logic.
+- The factory usually exposes a single Create() method.
+- Often uses static methods.
+- Violate Solid Principles
+  - OCP: modifying the factory to support new types.
+  - ISP: not dirrectly applicable.
+  
 ```c#
 public interface INotificationService
 {
@@ -76,7 +77,8 @@ public class NotificationFactoryService
 ---
 
 ### 1.3# Factory Method Pattern:
-The Factory Method Pattern defines an interface for creating an object but lets subclasses alter the type of objects that will be created. This pattern involves a base class (often abstract) and subclasses that implement the `factory method to create objects`.
+The Factory Method Pattern defines an abstract method for creating an object, while allowing subclasses to decide which concrete object to instantiate. It removes the creation responsibility from the client and promotes extensibility.
+
 - provides a method to create objects, with the actual creation logic in subclasses.
 - Promotes code extensibility and follows the Open/Closed Principle.
 - ISP: not directly applicable.
